@@ -1,9 +1,127 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Andros Island Journal | A Greek Paradise</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+</head>
+
 
 <body>
-  <h1>Nitay Zur</h1>
-  <p>Welcome to my website!</p>
-  <img src="https://content.codecademy.com/articles/github-pages-via-web-app/happy-ice-cream.gif" />
-</body>
+  <nav>
+    <div class="nav-content">
+      <a href="#" class="nav-logo">Andros Journal</a>
+      <div class="nav-links">
+        <a href="#home">Home</a>
+        <a href="#about">About</a>
+        <a href="#blog">Blog</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </div>
+  </nav>
 
+  <section class="hero" id="home">
+    <div class="hero-content">
+      <h1>Welcome to Andros</h1>
+      <p>Discovering the raw beauty of Greece's hidden gem</p>
+    </div>
+  </section>
+
+  <section class="blog-posts" id="blog">
+    <article class="post">
+      <header class="post-header">
+        <h2 class="post-title">Exploring Chora's Venetian Castle</h2>
+        <p class="post-date">October 25, 2024</p>
+      </header>
+
+
+      <div class="gallery">
+        <div class="gallery-item">
+          <img src="./imgs/sunset at liam's.jpg" alt="Venetian Castle">
+        </div>
+        <div class="gallery-item">
+          <img src="/api/placeholder/600/450" alt="Castle View">
+        </div>
+        <div class="gallery-item">
+          <img src="/api/placeholder/600/450" alt="Sunset at Castle">
+        </div>
+      </div>
+      <div class="post-content">
+        <p>Walking through the medieval streets of Chora, the island's capital, feels like stepping back in time. The Venetian castle, perched high above the sea, offers breathtaking views of the Aegean...</p>
+      </div>
+    </article>
+
+    <article class="post">
+      <header class="post-header">
+        <h2 class="post-title">Hidden Beaches of Andros</h2>
+        <p class="post-date">October 23, 2024</p>
+      </header>
+      <div class="gallery">
+        <div class="gallery-item">
+          <img src="/api/placeholder/600/450" alt="Beach Cove">
+        </div>
+        <div class="gallery-item">
+          <img src="/api/placeholder/600/450" alt="Crystal Waters">
+        </div>
+        <div class="gallery-item">
+          <img src="/api/placeholder/600/450" alt="Beach Sunset">
+        </div>
+      </div>
+      <div class="post-content">
+        <p>Discovering secluded beaches along Andros' coastline is an adventure in itself. Each cove tells its own story, with crystal-clear waters and golden sand...</p>
+      </div>
+    </article>
+  </section>
+
+  <footer>
+    <p>&copy; 2024 Andros Island Journal. All rights reserved.</p>
+  </footer>
+
+  <script>
+    // Initialize GSAP ScrollTrigger
+    gsap.registerPlugin(ScrollTrigger);
+
+    // Navbar scroll animation
+    window.addEventListener('scroll', () => {
+      const nav = document.querySelector('nav');
+      if (window.scrollY > 100) {
+        nav.classList.add('scrolled');
+      } else {
+        nav.classList.remove('scrolled');
+      }
+    });
+
+    // Hero animations
+    gsap.to('.hero h1', {
+      opacity: 1,
+      y: 0,
+      duration: 1,
+      delay: 0.5
+    });
+
+    gsap.to('.hero p', {
+      opacity: 1,
+      y: 0,
+      duration: 1,
+      delay: 0.8
+    });
+
+    // Blog post animations
+    gsap.utils.toArray('.post').forEach(post => {
+      gsap.to(post, {
+        scrollTrigger: {
+          trigger: post,
+          start: 'top bottom-=100',
+          toggleActions: 'play none none reverse'
+        },
+        opacity: 1,
+        y: 0,
+        duration: 1
+      });
+    });
+  </script>
+</body>
 </html>
